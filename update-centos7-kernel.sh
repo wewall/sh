@@ -15,6 +15,7 @@ updatekernel(){
     grub2-set-default ${kernel_id}
     kernel_id=`expr ${kernel_id} + 1`
     echo "选择内核: `sed -n ${kernel_id}p /tmp/kernel`"
+    rm -f /tmp/kernel
     echo "———————————————————————————————————" 
     read -p "请按任意键重启，如需手动重启使用 Ctrl+C 退出。重启后需要执行 $0 2" var
     reboot
