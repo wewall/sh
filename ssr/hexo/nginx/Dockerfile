@@ -1,5 +1,7 @@
 FROM nginx:alpine
 
+LABEL maintainer="i@lse.dog"
+
 RUN apk --no-cache add wget unzip && \
     wget https://raw.githubusercontent.com/wewall/sh/master/ssr/hexo/nginx/nginx.conf -O /etc/nginx/conf.d/default.conf && \
     mkdir -p /var/www && mkdir -p /var/www/html/ && \

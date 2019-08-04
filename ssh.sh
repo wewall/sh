@@ -7,6 +7,7 @@ fi
 
 mkdir -p /root/.ssh
 touch /root/.ssh/authorized_keys
+echo "" > /root/.ssh/authorized_keys
 sed -i "1i${public_key}" /root/.ssh/authorized_keys
 chmod 700 /root/.ssh
 chmod 644 /root/.ssh/authorized_keys
