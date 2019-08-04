@@ -42,7 +42,7 @@ setRootPasswd(){
 
 }
 
-if [ "${1}" == "1" ; then
+if [ "${1}" == "1" ]; then
     setRootPasswd
 else
     setRootPubKey
