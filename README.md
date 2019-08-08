@@ -13,3 +13,10 @@ wget -q -O ssh.sh https://raw.githubusercontent.com/wewall/sh/master/ssh.sh \
 wget -q -O bbr.sh https://raw.githubusercontent.com/wewall/sh/master/bbr.sh \
  && chmod +x bbr.sh && ./bbr.sh { 1 | 2 }
 ```
+
+#### 配置 MTProxy 
+
+```bash
+wget -q -O mtp.sh https://raw.githubusercontent.com/wewall/sh/master/mtp/mtp.sh \
+ && chmod +x mtp.sh && ./mtp.sh
+```

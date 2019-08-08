@@ -51,9 +51,9 @@ if [ ${set_num} = "1" ]; then
     [ -z "${mtp_ipadd}" ] && mtp_ipadd="`curl -4 -s ip.sb`"
     read -p "请输入 MTProxy 端口 (默认：443) :" mtp_port
     [ -z "${mtp_port}" ] && mtp_port="443"
-    read -p "请输入 MTProxy 密钥 (默认：01145141145141145141145141145140) :" mtp_sec
-    [ -z "${mtp_sec}" ] && mtp_sec="01145141145141145141145141145140"
     if [ ${mt_num} = "1" ]; then
+        read -p "请输入 MTProxy 密钥 (默认：01145141145141145141145141145140) :" mtp_sec
+        [ -z "${mtp_sec}" ] && mtp_sec="01145141145141145141145141145140"
         docker run -d -p ${mtp_port}:443 -v proxy-config:/data -e SECRET=${mtp_sec} --name=mtp --restart=always telegrammessenger/proxy:latest
     fi
     docker run -p ${KCPPORT}:${KCPPORT}/udp -e KCPPORT=${KCPPORT} -e IP=${mtp_ipadd} -e MTPPORT=${mtp_port} -e KEY=${KCPKEY} -e CRYPT=${KCPCRYPT} -e MTU=1200 -e SNDWND=${KCPRCVWND} -e RCVWND=${KCPRCVWND} -e MODE=${KCPMODE} -d --restart always --name kcp wewall/kcptun:s
