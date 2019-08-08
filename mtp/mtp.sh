@@ -56,13 +56,13 @@ if [ ${set_num} = "1" ]; then
         [ -z "${mtp_sec}" ] && mtp_sec="01145141145141145141145141145140"
         docker run -d -p ${mtp_port}:443 -v proxy-config:/data -e SECRET=${mtp_sec} --name=mtp --restart=always telegrammessenger/proxy:latest
     fi
-    docker run -p ${KCPPORT}:${KCPPORT}/udp -e KCPPORT=${KCPPORT} -e IP=${mtp_ipadd} -e MTPPORT=${mtp_port} -e KEY=${KCPKEY} -e CRYPT=${KCPCRYPT} -e MTU=1200 -e SNDWND=${KCPRCVWND} -e RCVWND=${KCPRCVWND} -e MODE=${KCPMODE} -d --restart always --name kcp wewall/kcptun:s
+    docker run -p ${KCPPORT}:${KCPPORT}/udp -e KCPPORT=${KCPPORT} -e IP=${mtp_ipadd} -e MTPPORT=${mtp_port} -e KEY=${KCPKEY} -e CRYPT=${KCPCRYPT} -e MTU=1200 -e SNDWND=${KCPRCVWND} -e RCVWND=${KCPRCVWND} -e MODE=${KCPMODE} -d --restart always --name kcps wewall/kcptun:s
 elif [ ${set_num} = "2" ]; then
     read -p "请输入远端 IP (默认：`curl -4 -s ip.sb`) :" KCPSIP
     [ -z "${KCPSIP}" ] && KCPSIP="`curl -4 -s ip.sb`"
     read -p "请输入远端 KCP Port (默认：80) :" KCPSPORT
     [ -z "${KCPSPORT}" ] && KCPSPORT="80"
-    docker run -p ${KCPPORT}:${KCPPORT} -e SERVERPORT=${KCPPORT} -e IP=${KCPSIP} -e KCPPORT=${KCPSPORT} -e KEY=${KCPKEY} -e CRYPT=${KCPCRYPT} -e MTU=1200 -e SNDWND=${KCPRCVWND} -e RCVWND=${KCPRCVWND} -e MODE=${KCPMODE} -d --restart always --name kcp wewall/kcptun:c
+    docker run -p ${KCPPORT}:${KCPPORT} -e SERVERPORT=${KCPPORT} -e IP=${KCPSIP} -e KCPPORT=${KCPSPORT} -e KEY=${KCPKEY} -e CRYPT=${KCPCRYPT} -e MTU=1200 -e SNDWND=${KCPRCVWND} -e RCVWND=${KCPRCVWND} -e MODE=${KCPMODE} -d --restart always --name kcpc wewall/kcptun:c
 else
     echo "o(*￣▽￣*)ブ"
     exit 1
