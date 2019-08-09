@@ -46,5 +46,5 @@ CMD sed -i "s|NODE_ID = 1|NODE_ID = ${NODE_ID}|" apiconfig.py && \
     sed -i "s|MYSQL_DB = 'shadowsocks'|MYSQL_DB = '${MYSQL_DB}'|" apiconfig.py && \
     sed -i "s|\"redirect\": \"\"|\"redirect\": \"${REDIRECT}\"|" config.json && \
     sed -i "s|\"fast_open\": false|\"fast_open\": ${FAST_OPEN}|" config.json && \
-    sed -i "s|server\[0\] = server\[0\]|server\[0\] = ${NETFLIXDNS}|" shadowsocks/asyncdns.py && \
+    sed -i "s|netflixDNS = server\[0\]|netflixDNS = ${NETFLIXDNS}|" shadowsocks/asyncdns.py && \
     python server.py
