@@ -3,29 +3,31 @@ FROM alpine
 LABEL maintainer="i@lse.dog"
 
 ENV NODE_ID=0 \
-    SPEEDTEST=0 \
-    CLOUDSAFE=0 \
-    AUTOEXEC=0 \
-    ANTISSATTACK=0 \
-    MU_SUFFIX=microsoft.com \
-    MU_REGEX=%5m%id.%suffix \
-    API_INTERFACE=glzjinmod \
-    WEBAPI_URL=http://api.biye.la \
-    WEBAPI_TOKEN=lsedog \
-    MYSQL_HOST=127.0.0.1 \
-    MYSQL_PORT=3306 \
-    MYSQL_USER=root \
-    MYSQL_PASS=root \
-    MYSQL_DB=ssr \
-    REDIRECT=github.com \
-    FAST_OPEN=true \
-    NETFLIXDNS='server[0]'
+ SPEEDTEST=0 \
+ CLOUDSAFE=0 \
+ AUTOEXEC=0 \
+ ANTISSATTACK=0 \
+ MU_SUFFIX=microsoft.com \
+ MU_REGEX=%5m%id.%suffix \
+ API_INTERFACE=glzjinmod \
+ WEBAPI_URL=http://api.biye.la \
+ WEBAPI_TOKEN=lsedog \
+ MYSQL_HOST=127.0.0.1 \
+ MYSQL_PORT=3306 \
+ MYSQL_USER=root \
+ MYSQL_PASS=root \
+ MYSQL_DB=ssr \
+ REDIRECT=github.com \
+ FAST_OPEN=true \
+ NETFLIXDNS='server[0]'
 
-RUN  apk --no-cache add curl python python-dev libsodium-dev openssl-dev udns-dev mbedtls-dev pcre-dev libev-dev libtool libffi-dev && \
-  apk --no-cache add --virtual .build-deps git tar make py-pip autoconf automake build-base linux-headers && \
-  git clone -b manyuser https://github.com/wewall/shadowsocks.git /root/shadowsocks --depth 1 && \
-  pip install --upgrade pip && cd /root/shadowsocks && pip install -r requirements.txt && \
-  rm -rf ~/.cache ~/shadowsocks/.git && touch /etc/hosts.deny && apk del --purge .build-deps
+RUN apk --no-cache add curl python python-dev libsodium-dev openssl-dev udns-dev mbedtls-dev pcre-dev libev-dev libtool libffi-dev && \
+ apk --no-cache add git tar make py-pip autoconf automake build-base linux-headers  && \
+ git clone -b manyuser https://github.com/wewall/shadowsocks.git /root/shadowsocks --depth 1 && \
+ pip install -r /root/shadowsocks/requirements.txt  && \
+ apk del git tar make py-pip autoconf automake build-base linux-headers && \
+ rm -rf ~/.cache ~/shadowsocks/.git && \
+ touch /etc/hosts.deny
 
 WORKDIR /root/shadowsocks
 
