@@ -32,7 +32,8 @@ docker run -e NODEID=0 -e HOST="1.1.1.1 baidu.com" -e KEY=lsedog -d --name=v2ray
 
 ```bash
 docker run -e NODE_ID=0 -e API_INTERFACE=modwebapi -e WEBAPI_URL=https://vjust.com \
- -e WEBAPI_TOKEN=lsedog -e NETFLIXDNS='"48.71.46.21"' -d --name=ssr --net=host \
+ -e WEBAPI_TOKEN=lsedog -e NETFLIXDNS='"48.71.46.21"' -e HBODNS='"48.71.46.21"' \
+ -e HULUDNS='"48.71.46.21"' -d --name=ssr --net=host \
  --restart=always wewall/ssr-mu
 ```
 

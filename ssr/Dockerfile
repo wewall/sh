@@ -19,7 +19,9 @@ ENV NODE_ID=0 \
  MYSQL_DB=ssr \
  REDIRECT=github.com \
  FAST_OPEN=true \
- NETFLIXDNS='server[0]'
+ NETFLIXDNS='server[0]' \
+ HBODNS='server[0]' \
+ HULUDNS='server[0]'
 
 RUN apk --no-cache add curl python python-dev libsodium-dev openssl-dev udns-dev mbedtls-dev pcre-dev libev-dev libtool libffi-dev && \
  apk --no-cache add git tar make py-pip autoconf automake build-base linux-headers  && \
@@ -49,4 +51,6 @@ CMD sed -i "s|NODE_ID = 1|NODE_ID = ${NODE_ID}|" apiconfig.py && \
     sed -i "s|\"redirect\": \"\"|\"redirect\": \"${REDIRECT}\"|" config.json && \
     sed -i "s|\"fast_open\": false|\"fast_open\": ${FAST_OPEN}|" config.json && \
     sed -i "s|netflixDNS = server\[0\]|netflixDNS = ${NETFLIXDNS}|" shadowsocks/asyncdns.py && \
+    sed -i "s|hboDNS = server\[0\]|hboDNS = ${HBODNS}|" shadowsocks/asyncdns.py && \
+    sed -i "s|huluDNS = server\[0\]|huluDNS = ${HULUDNS}|" shadowsocks/asyncdns.py && \
     python server.py
