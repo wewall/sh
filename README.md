@@ -14,10 +14,17 @@ wget -q -O bbr.sh https://raw.githubusercontent.com/wewall/sh/master/bbr.sh \
  && chmod +x bbr.sh && ./bbr.sh { 1 | 2 }
 ```
 
-#### 配置 MTProxy 
+#### 配置 KCPTUN 
 
 ```bash
-wget -q -O mtp.sh https://raw.githubusercontent.com/wewall/sh/master/mtp/mtp.sh \
+wget -q -O mtp.sh https://raw.githubusercontent.com/wewall/sh/master/kcptun/kcptun.sh \
+ && chmod +x mtp.sh && ./mtp.sh
+```
+
+#### 配置 KCPTUN 
+
+```bash
+wget -q -O mtp.sh https://raw.githubusercontent.com/wewall/sh/master/kcptun/mtp/mtp.sh \
  && chmod +x mtp.sh && ./mtp.sh
 ```
 

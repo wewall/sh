@@ -22,7 +22,7 @@ else
     exit 1
 fi
 
-curl -fsSL https://get.docker.com/ | sh
+docker version || curl -fsSL https://get.docker.com/ | sh
 
 echo "请输入数字来选择："
 echo "1. 远端"
@@ -67,5 +67,3 @@ else
     echo "o(*￣▽￣*)ブ"
     exit 1
 fi
-
-
